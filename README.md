@@ -34,8 +34,11 @@ Another option is to open terminal, create the directory you want and clone the 
 # Create a directory for tccompanion
 sudo mkdir /opt/tccompanion
 
+# Depending on the directory, you may need to update the ownership. e.g.:
+sudo chown -R ${USER}: /opt/tccompanion
+
 # Clone the thermostat-control-companion repository
-git clone --depth 1 https://github.com/studiojq/thermostat-control-companion.git /opt/tccompanion
+git clone --depth 1 https://github.com/thestudiojq/thermostat-control-companion.git /opt/tccompanion
 ```
 
 Once the files are in place, from terminal, install the necessary dependencies. i.e.:
@@ -169,10 +172,16 @@ If you're updating the config from the browser, note that the API key field will
 
 There isn't much to using the app. You just let it run and it will trigger a notification on thermostat state change.
 
-If you're running into issues with the app, such as not getting push notifications or the app not reading the (correct) data from the thermostat, then first visit `localhost:3218` in your browser. Config issues will be noted with an error message under the table. If there's nothing there, then check the output via terminal. So, if you aren't running the app as a service, then any errors will just be output to the console/terminal window as they happen. If you are running it as a service, then run the following command in a teminal window:
+If you're running into issues with the app, such as not getting push notifications or the app not reading the (correct) data from the thermostat, then first visit `localhost:3218` in your browser. Config issues will be noted with an error message under the table. If there's nothing there, then check the output via terminal. So, if you aren't running the app as a service, then any errors will just be output to the console/terminal window where the app is running as they happen. If you're running it as a service, then check the journal in a terminal window. e.g:
 
 ```
 sudo journalctl -u tccompanion -f
+
+# or
+
+sudo journalctl -u tccompanion -n 50
+
+# etc.
 ```
 
 And make the issue happen again. This should report back more details on the issue/error, which should hopefully allow you to troubleshoot and diagnose the problem.
