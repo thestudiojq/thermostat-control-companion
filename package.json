@@ -1,0 +1,28 @@
+{
+	"name": "thermostat-control-companion",
+	"version": "0.1.0",
+	"author": "STUDIOJQ",
+	"type": "module",
+	"description": "Companion app to enable push notifications in the Thermostat Control iPhone app for Venstar thermostats.",
+	"license": "GPL-3.0-or-later",
+	"homepage": "https://github.com/thestudiojq/thermostat-control-companion",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thestudiojq/thermostat-control-companion"
+	},
+	"bugs": {
+		"url": "https://github.com/thestudiojq/thermostat-control-companion/issues"
+	},
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"express": "^4.19.2",
+		"fs-extra": "^11.2.0",
+		"pug": "^3.0.2"
+	},
+	"keywords": [
+		"thermostat",
+		"venstar"
+	]	
+}

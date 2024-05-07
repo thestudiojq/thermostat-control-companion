@@ -1,0 +1,17 @@
+extends layout.pug
+block content
+	div(class='container')
+		a(class='nav-button' href='/')='Back'
+		h1=title
+		div(class='form')
+			div(class='form-field')
+				label(for='ipaddress')='IP Address'
+				input(type='text', name='ipaddress', id='ipaddress', value='')
+			div(class='form-field')
+				label(for='apikey')='Api Key'
+				input(type='password', name='apikey', id='apikey', value='')
+			div(class='form-field')
+				label(for='interval')='Interval (in seconds)'
+				input(type='number', name='interval', id='interval', value='')
+			div(class='form-field')
+				button(id='save-form')='Save'

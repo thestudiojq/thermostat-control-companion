@@ -1,0 +1,32 @@
+extends layout.pug
+block content
+	div(class='container')
+		a(class='nav-button' href='config')='Settings'
+		h1=title
+		div(class='thermostat-data')
+			table
+				tr
+					th='Mode'
+					td=mode
+				tr
+					th='State'
+					td=state
+				tr
+					th='Current Temp'
+					td=temp
+				tr
+					th='Set Temp'
+					td=settemp
+				tr
+					th='Humidity'
+					td=humidity
+				tr
+					th='Fan Mode'
+					td=fanmode
+				tr
+					th='Fan State'
+					td=fanstate
+				tr
+					th='Time Stamp'
+					td=timestamp
+		div(class='config-filled-in-or-not')=configincompletetext

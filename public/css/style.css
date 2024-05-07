@@ -1,0 +1,100 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	background: #282A36;
+	color: #F8F8F2;
+}
+a {
+	color: #F8F8F2;
+}
+code {
+	background: #44475A;
+	padding: 8px 12px;
+	border-radius: 6px;
+}
+.container * {
+	box-sizing: border-box;
+}
+.container {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+.nav-button {
+	margin-top: 32px;
+	border: 1px solid #44475A;
+	padding: 8px 12px;
+	border-radius: 6px;
+	text-decoration: none;
+	transition: background .35s;
+}
+.nav-button:hover {
+	background: #44475A;
+}
+h1 {
+	margin-top: 32px;
+}
+.thermostat-data {
+	display: flex;
+	width: auto;
+	margin-top: 32px;
+}
+.thermostat-data table,
+.thermostat-data tr,
+.thermostat-data th,
+.thermostat-data td {
+	border: 1px solid #44475A;
+	border-collapse: collapse;
+}
+.thermostat-data th,
+.thermostat-data td {
+	padding: 12px 16px;
+	text-align: left;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.form-field {
+	display: flex;
+	align-items: center;
+	width: auto;
+	margin-top: 20px;
+}
+label {
+	width: 90px;
+}
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+	border: none;
+	box-shadow: none;
+	background: #44475A;
+	padding: 8px 12px;
+	border-radius: 6px;
+	font-size: 16px;
+	color: #F8F8F2;
+}
+#save-form {
+	border: none;
+	margin-top: 24px;
+	background: #BD93F9;
+	color: #F8F8F2;
+	padding: 8px 20px;
+	border-radius: 50px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background .35s;
+}
+#save-form:hover {
+	background: #FF79C6;
+}
+.config-filled-in-or-not {
+	margin-top: 32px;
+	color: #FF5555;
+}
