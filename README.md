@@ -1,10 +1,12 @@
 # thermostat-control-companion
 
-Companion app for our *Thermostat Control* iPhone app, which lets you monitor and control your Venstar thermostat. The main purpose of this companion app is to allow for push notifications via the iPhone app. But, if you wanted, it could also be used as a standalone readout of the core data coming from the thermostat.
+Companion app for our *Thermostat Controller* iPhone app, which lets you monitor and control your Venstar thermostat. The main purpose of this companion app is to allow for push notifications via the iPhone app. But, if you wanted, it could also be used as a standalone readout of the core data coming from the thermostat.
+
+iOS app available here: 
 
 ## What it does
 
-The app monitors your Venstar thermostat via its local API, and, if it detects a change in state (i.e. goes from being idle to active or vice versa), then it triggers a push notification that gets sent to your iPhone via the *Thermostat Control* app. 
+The app monitors your Venstar thermostat via its local API, and, if it detects a change in state (i.e. goes from being idle to active or vice versa), then it triggers a push notification that gets sent to your iPhone via the *Thermostat Controller* app. 
 
 Note that it's likely that your thermostat will change states quite often during the day, especially if it's quite cold or hot (and you have AC) out, so you may receive many notifications. Perfect if, like me, you love home automation lol. Perhaps less perfect for others...
 
