@@ -59,17 +59,13 @@ class GetData {
 
 			if ( json.state != currentState ) {
 
-				if ( json.state == 1 && currentState == 0 ) {
-					if ( json.mode == 1 ) { message = 'System is now heating.'; }
-					else if ( json.mode == 2 ) { message = 'System is now cooling.'; }
-					else { message = 'System has come on.'; }
-				}
-				else {
-					message = 'System is now idle.';
-				}
+				if ( json.state == 1 ) { message = 'System is now heating.'; }
+				else if ( json.state == 2 ) { message = 'System is now cooling.'; }
+				else { message = 'System is now idle.'; }
 				console.log( message );
 			}
 			else {
+				
 				message = '';
 			}
 			

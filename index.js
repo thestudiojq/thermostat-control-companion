@@ -43,7 +43,7 @@ function renderView() {
 		theSetTemp = '';
 	}
 
-	currentStateName = currentState == 1 ? "ON" : "IDLE";
+	currentStateName = currentState == 1 || currentState == 2 ? "ON" : "IDLE";
 	fanModeName = fan == 1 ? "ON" : "AUTO";
 	fanStateName = fanState == 1 ? "ON" : "OFF";
 	timestamp = Date.now();
