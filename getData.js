@@ -117,12 +117,12 @@ class GetData {
 	async didSendData() {
 
 		await this.sendData()
-		.catch( ( error ) => {
-			console.log( '' );
-			console.log( 'Something went wrong. Check your config.' );
-			console.log( '' );
-			console.warn( error );
-		} );		
+			.catch( ( error ) => {
+				console.log( '' );
+				console.log( 'Something went wrong. Check your config.' );
+				console.log( '' );
+				console.warn( error );
+			} );		
 	}
 
 	async init() {
