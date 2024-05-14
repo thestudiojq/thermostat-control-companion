@@ -2,7 +2,7 @@
 
 Companion app for our *Thermostat Controller* iPhone app, which lets you monitor and control your **Venstar** thermostat. The main purpose of this companion app is to allow for push notifications via the iPhone app. But, if you wanted, it could also be used as a standalone readout of the core data coming from the thermostat.
 
-iOS app available here: 
+iOS app available [here](https://apps.apple.com/ca/app/thermostat-controller/id6502414185).
 
 ## What it does
 
