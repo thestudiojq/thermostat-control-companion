@@ -78,6 +78,21 @@ input[type="password"] {
 	border-radius: 6px;
 	font-size: 16px;
 	color: #F8F8F2;
+	width: 220px;
+}
+.radio-input-area {
+	width: 220px;
+}
+.each-radio {
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+input[type="radio"] {
+	margin-right: 6px;
+}
+.each-radio:first-of-type {
+	margin-bottom: 6px;
 }
 #save-form {
 	border: none;

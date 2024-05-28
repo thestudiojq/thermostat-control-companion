@@ -14,4 +14,13 @@ block content
 				label(for='interval')='Interval (in seconds)'
 				input(type='number', name='interval', id='interval', value='')
 			div(class='form-field')
+				label(for='interval')='Remote retrieval mode'
+				div(class='radio-input-area')
+					div(class='each-radio')
+						input(type='radio', name='remoteretrieve', id='remoteretrieveno', value='no', checked)
+						print No
+					div(class='each-radio')
+						input(type='radio', name='remoteretrieve', id='remoteretrieveyes', value='yes')
+						print Yes
+			div(class='form-field')
 				button(id='save-form')='Save'

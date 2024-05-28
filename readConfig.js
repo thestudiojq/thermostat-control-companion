@@ -3,6 +3,7 @@ import fs from 'fs-extra';
 var definedIp;
 var definedApiKey;
 var definedInterval;
+var isRemoteRetrieveEnabled;
 var inMilliseconds = 120000;
 
 class ReadConfig {
@@ -30,6 +31,7 @@ class ReadConfig {
 		definedIp = this.data.ip;
 		definedApiKey = this.data.apikey;
 		definedInterval = parseInt( this.data.interval );
+		isRemoteRetrieveEnabled = this.data.remoteretrieve;
 		inMilliseconds = Number.isInteger( definedInterval ) ? definedInterval * 1000 : 120000;
 	}
 
@@ -41,4 +43,4 @@ class ReadConfig {
 
 const readConfig = new ReadConfig();
 
-export { readConfig, definedIp, definedApiKey, definedInterval, inMilliseconds };
+export { readConfig, definedIp, definedApiKey, definedInterval, isRemoteRetrieveEnabled, inMilliseconds };

@@ -1,4 +1,4 @@
-import { readConfig, definedIp, definedApiKey, inMilliseconds } from './readConfig.js'
+import { readConfig, definedIp, definedApiKey, isRemoteRetrieveEnabled, inMilliseconds } from './readConfig.js'
 
 var configIncompleteText;
 var currentMode;
@@ -10,6 +10,7 @@ var currentHum;
 var fan;
 var fanState;
 var message = '';
+var todayRuntime;
 
 class GetData {
 
@@ -78,6 +79,18 @@ class GetData {
 			currentHum = json.hum;
 			fan = json.fan;
 			fanState = json.fanstate;
+
+			if ( isRemoteRetrieveEnabled == 'yes' ) {
+				
+				const resultRuntimes = await fetch( `${this.protocol}://${definedIp}/query/runtimes` );
+				const jsonRuntimes = await resultRuntimes.json();
+				
+				if ( currentMode == 1 ) { todayRuntime = jsonRuntimes.runtimes[6].heat1; }
+				if ( currentMode == 2 ) { todayRuntime = jsonRuntimes.runtimes[6].cool1; }
+				else { todayRuntime = ( jsonRuntimes.runtimes[6].heat1 ) + ( jsonRuntimes.runtimes[6].cool1 ); }
+
+				console.log( 'Today runtime:', todayRuntime, 'minutes' );
+			}
 		}
 	}
 
@@ -106,6 +119,31 @@ class GetData {
 				body: JSON.stringify( {
 					apikey: definedApiKey,
 					message: message
+				} )
+			} ).then( response => response.json() ).then( ( data ) => { 
+				console.log( data.message );
+				configIncompleteText = data.configtext;
+			} );
+		}
+
+		if ( isRemoteRetrieveEnabled == 'yes' ) {
+
+			const sendToApi = fetch( 'https://api.studiojq.io/thermdata', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify( {
+					apikey: definedApiKey,
+					mode: currentMode,
+					state: currentState,
+					temp: currentTemp,
+					heattemp: heatTemp,
+					cooltemp: coolTemp,
+					hum: currentHum,
+					fan: fan,
+					fanstate: fanState,
+					todayruntime: todayRuntime
 				} )
 			} ).then( response => response.json() ).then( ( data ) => { 
 				console.log( data.message );
