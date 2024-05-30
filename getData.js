@@ -11,6 +11,13 @@ var fan;
 var fanState;
 var message = '';
 var todayRuntime;
+var yesterdayRuntime;
+var twoDaysAgoRuntime;
+var threeDaysAgoRuntime;
+var fourDaysAgoRuntime;
+var fiveDaysAgoRuntime;
+var sixDaysAgoRuntime;
+var tempUnits;
 
 class GetData {
 
@@ -79,15 +86,43 @@ class GetData {
 			currentHum = json.hum;
 			fan = json.fan;
 			fanState = json.fanstate;
+			tempUnits = json.tempunits;
 
 			if ( isRemoteRetrieveEnabled == 'yes' ) {
 				
 				const resultRuntimes = await fetch( `${this.protocol}://${definedIp}/query/runtimes` );
 				const jsonRuntimes = await resultRuntimes.json();
 				
-				if ( currentMode == 1 ) { todayRuntime = jsonRuntimes.runtimes[6].heat1; }
-				if ( currentMode == 2 ) { todayRuntime = jsonRuntimes.runtimes[6].cool1; }
-				else { todayRuntime = ( jsonRuntimes.runtimes[6].heat1 ) + ( jsonRuntimes.runtimes[6].cool1 ); }
+				if ( currentMode == 1 ) {
+					
+					todayRuntime = jsonRuntimes.runtimes[6].heat1;
+					yesterdayRuntime = jsonRuntimes.runtimes[5].heat1;
+					twoDaysAgoRuntime = jsonRuntimes.runtimes[4].heat1;
+					threeDaysAgoRuntime = jsonRuntimes.runtimes[3].heat1;
+					fourDaysAgoRuntime = jsonRuntimes.runtimes[2].heat1;
+					fiveDaysAgoRuntime = jsonRuntimes.runtimes[1].heat1;
+					sixDaysAgoRuntime = jsonRuntimes.runtimes[0].heat1;
+				}
+				if ( currentMode == 2 ) {
+					
+					todayRuntime = jsonRuntimes.runtimes[6].cool1;
+					yesterdayRuntime = jsonRuntimes.runtimes[5].cool1;
+					twoDaysAgoRuntime = jsonRuntimes.runtimes[4].cool1;
+					threeDaysAgoRuntime = jsonRuntimes.runtimes[3].cool1;
+					fourDaysAgoRuntime = jsonRuntimes.runtimes[2].cool1;
+					fiveDaysAgoRuntime = jsonRuntimes.runtimes[1].cool1;
+					sixDaysAgoRuntime = jsonRuntimes.runtimes[0].cool1;
+				}
+				else {
+					
+					todayRuntime = ( jsonRuntimes.runtimes[6].heat1 ) + ( jsonRuntimes.runtimes[6].cool1 );
+					yesterdayRuntime = ( jsonRuntimes.runtimes[5].heat1 ) + ( jsonRuntimes.runtimes[5].cool1 );
+					twoDaysAgoRuntime = ( jsonRuntimes.runtimes[4].heat1 ) + ( jsonRuntimes.runtimes[4].cool1 );
+					threeDaysAgoRuntime = ( jsonRuntimes.runtimes[3].heat1 ) + ( jsonRuntimes.runtimes[3].cool1 );
+					fourDaysAgoRuntime = ( jsonRuntimes.runtimes[2].heat1 ) + ( jsonRuntimes.runtimes[2].cool1 );
+					fiveDaysAgoRuntime = ( jsonRuntimes.runtimes[1].heat1 ) + ( jsonRuntimes.runtimes[1].cool1 );
+					sixDaysAgoRuntime = ( jsonRuntimes.runtimes[0].heat1 ) + ( jsonRuntimes.runtimes[0].cool1 );
+				}
 
 				console.log( 'Today runtime:', todayRuntime, 'minutes' );
 			}
@@ -111,7 +146,7 @@ class GetData {
 
 		if ( message != '' ) {
 
-			const sendToApi = fetch( 'https://api.studiojq.io/notifications', {
+			const sendNotificationToApi = fetch( 'https://api.studiojq.io/notifications', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -128,7 +163,7 @@ class GetData {
 
 		if ( isRemoteRetrieveEnabled == 'yes' ) {
 
-			const sendToApi = fetch( 'https://api.studiojq.io/thermdata', {
+			const sendThermDataToApi = fetch( 'https://api.studiojq.io/thermdata', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -143,7 +178,14 @@ class GetData {
 					hum: currentHum,
 					fan: fan,
 					fanstate: fanState,
-					todayruntime: todayRuntime
+					todayruntime: todayRuntime,
+					yesterdayruntime: yesterdayRuntime,
+					twodaysagoruntime: twoDaysAgoRuntime,
+					threedaysagoruntime: threeDaysAgoRuntime,
+					fourdaysagoruntime: fourDaysAgoRuntime,
+					fivedaysagoruntime: fiveDaysAgoRuntime,
+					sixdaysagoruntime: sixDaysAgoRuntime,
+					tempunits: tempUnits
 				} )
 			} ).then( response => response.json() ).then( ( data ) => { 
 				console.log( data.message );
