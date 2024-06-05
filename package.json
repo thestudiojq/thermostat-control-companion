@@ -1,9 +1,9 @@
 {
 	"name": "thermostat-control-companion",
-	"version": "0.1.1",
+	"version": "0.2.0-beta.1",
 	"author": "STUDIOJQ",
 	"type": "module",
-	"description": "Companion app to enable push notifications in the Thermostat Controller iPhone app for Venstar thermostats.",
+	"description": "Companion app to enable push notifications and remote mode in the Thermostat Controller iPhone app for Venstar thermostats.",
 	"license": "GPL-3.0-or-later",
 	"homepage": "https://github.com/thestudiojq/thermostat-control-companion",
 	"repository": {
@@ -23,6 +23,7 @@
 	},
 	"keywords": [
 		"thermostat",
-		"venstar"
+		"venstar",
+		"skyport"
 	]
 }
