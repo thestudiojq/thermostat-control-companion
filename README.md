@@ -1,6 +1,6 @@
 # thermostat-control-companion
 
-Companion app for our *Thermostat Controller* iPhone app, which lets you monitor and control your **Venstar** thermostat. The main purpose of this companion app is to allow for push notifications via the iPhone app. But, if you wanted, it could also be used as a standalone readout of the core data coming from the thermostat.
+Companion app for our *Thermostat Controller* iPhone app, which lets you monitor and control your **Venstar** thermostat. The main purpose of this companion app is to allow for push notifications via and enable remote data fetching for the iPhone app. But, if you wanted, it could also be used as a standalone readout of the core data coming from the thermostat.
 
 iOS app available [here](https://apps.apple.com/ca/app/thermostat-controller/id6502414185).
 
@@ -8,11 +8,13 @@ iOS app available [here](https://apps.apple.com/ca/app/thermostat-controller/id6
 
 The app monitors your Venstar thermostat via its local API, and, if it detects a change in state (i.e. goes from being idle to active or vice versa), then it triggers a push notification that gets sent to your iPhone via the *Thermostat Controller* app. 
 
+If you have the remote retrieval mode enabled, then it will also send the latest thermostat data to our server to allow for use of the remote (fetch) mode in the phone app.
+
 *Note that it's likely that your thermostat will change states quite often during the day, especially if it's quite cold or hot (and you have AC) out, so you may receive many notifications. Perfect if, like me, you love home automation lol. Perhaps less perfect for others...*
 
 ## Installation
 
-The following instructions apply to Linux, macOS and Windows. 
+The following instructions apply to most operating systems. 
 
 First make sure Node.js and npm are installed on your system. You can do this by opening a terminal (or command prompt) session and typing the following:
 
@@ -175,7 +177,7 @@ If you're updating the config from the browser, note that the API key field will
 
 ## Using
 
-There isn't much to using the app. You just let it run and it will fetch the thermostat data at the specific interval and, if there is a thermostat state change (e.g. idle to active or vice versa), it will trigger a push notification to your phone.
+There isn't much to using the app. You just let it run and it will fetch the thermostat data at the specified interval and, if there is a thermostat state change (e.g. idle to active or vice versa), it will trigger a push notification to your phone.
 
 If you're running into issues with the app, such as not getting push notifications or the app not reading the (correct) data from the thermostat, then first visit `localhost:3218` in your browser. Config issues will be noted with an error message under the table. If there's nothing there, then check the output via terminal. So, if you aren't running the app as a service, then any errors will just be output to the console/terminal window where the app is running as they happen. If you're running it as a service, then check the journal in a terminal window. e.g:
 
