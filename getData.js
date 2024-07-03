@@ -1,4 +1,4 @@
-import { readConfig, definedIp, definedApiKey, isRemoteRetrieveEnabled, inMilliseconds } from './readConfig.js'
+import { readConfig, definedIp, definedApiKey, areNotificationsEnabled, isRemoteRetrieveEnabled, inMilliseconds } from './readConfig.js'
 
 var configIncompleteText;
 var currentMode;
@@ -144,7 +144,7 @@ class GetData {
 
 		await this.didRetrieveData();
 
-		if ( message != '' ) {
+		if ( message != '' && areNotificationsEnabled == 'yes' ) {
 
 			const sendNotificationToApi = fetch( 'https://api.studiojq.io/notifications', {
 				method: 'POST',

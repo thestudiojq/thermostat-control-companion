@@ -7,8 +7,9 @@ jQuery( document ).ready( function( $ ) {
 		var ipAddress = $( '#ipaddress' ).val();
 		var apiKey = $( '#apikey' ).val();
 		var interval = $( '#interval' ).val();
+		var notificationsEnabled = $( 'input[name="notificationsenabled"]:checked' ).val();
 		var remoteRetrieve = $( 'input[name="remoteretrieve"]:checked' ).val();
-		var theData = JSON.stringify( { ip: ipAddress, apikey: apiKey, interval: interval, remoteretrieve: remoteRetrieve } );
+		var theData = JSON.stringify( { ip: ipAddress, apikey: apiKey, interval: interval, notificationsenabled: notificationsEnabled, remoteretrieve: remoteRetrieve } );
 
 		$.ajax( {
 			url: '/updateConfig',
@@ -38,6 +39,14 @@ function loadSavedSettings( $ ) {
 			else { 
 				$( '#remoteretrieveno' ).prop( 'checked', true );
 				$( '#remoteretrieveyes' ).prop( 'checked', false );
+			}
+			if ( data.notificationsenabled == 'yes' ) {
+				$( '#notificationsenabledno' ).prop( 'checked', false );
+				$( '#notificationsenabledyes' ).prop( 'checked', true );
+			}
+			else { 
+				$( '#notificationsenabledno' ).prop( 'checked', true );
+				$( '#notificationsenabledyes' ).prop( 'checked', false );
 			}
 		}
 	} );
