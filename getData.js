@@ -103,7 +103,7 @@ class GetData {
 					fiveDaysAgoRuntime = jsonRuntimes.runtimes[1].heat1;
 					sixDaysAgoRuntime = jsonRuntimes.runtimes[0].heat1;
 				}
-				if ( currentMode == 2 ) {
+				else if ( currentMode == 2 ) {
 					
 					todayRuntime = jsonRuntimes.runtimes[6].cool1;
 					yesterdayRuntime = jsonRuntimes.runtimes[5].cool1;
